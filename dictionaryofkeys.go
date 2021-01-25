@@ -74,6 +74,10 @@ func (d *DOK) Set(i, j int, v float64) {
 		panic(mat.ErrColAccess)
 	}
 
+	if v == 0 {
+		delete(d.elements, key{i, j})
+		return
+	}
 	d.elements[key{i, j}] = v
 }
 
